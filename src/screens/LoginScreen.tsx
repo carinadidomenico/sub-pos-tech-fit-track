@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
+import { useFocusEffect } from '@react-navigation/native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import {
   KeyboardAvoidingView,
@@ -33,6 +34,15 @@ export function LoginScreen({ navigation }: Props) {
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState<AuthFormErrors>({});
   const [submitting, setSubmitting] = useState(false);
+
+  useFocusEffect(
+    useCallback(() => {
+      return () => {
+        clearError();
+        setErrors({});
+      };
+    }, [clearError]),
+  );
 
   function clearFieldError(field: keyof AuthFormErrors) {
     if (errors[field]) {
@@ -117,6 +127,7 @@ export function LoginScreen({ navigation }: Props) {
             </FormField>
 
             <CustomButton
+              style={styles.button}
               label="Entrar"
               onPress={handleLogin}
               loading={submitting}
@@ -124,6 +135,7 @@ export function LoginScreen({ navigation }: Props) {
               accessibilityLabel="Entrar no FitTrack"
             />
             <CustomButton
+              style={styles.button}
               label="Criar conta"
               variant="outline"
               onPress={() => navigation.navigate('SignUp')}
@@ -158,6 +170,7 @@ const styles = StyleSheet.create({
   subtitle: {
     ...typography.body,
     color: colors.textSecondary,
+    marginVertical: spacing.sm,
   },
   input: {
     minHeight: 44,
@@ -169,8 +182,13 @@ const styles = StyleSheet.create({
     backgroundColor: colors.surface,
     ...typography.body,
     color: colors.text,
+    marginTop: spacing.xs,
   },
   inputError: {
     borderColor: colors.error,
+    marginTop: spacing.xs,
+  },
+  button: {
+    marginTop: spacing.lg,
   },
 });

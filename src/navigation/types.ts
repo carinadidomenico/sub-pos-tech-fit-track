@@ -9,5 +9,4 @@ export type AppStackParamList = {
   History: undefined;
 };
 
-/** @deprecated Use AppStackParamList */
 export type RootStackParamList = AppStackParamList;

@@ -32,7 +32,6 @@ export function SignUpScreen({ navigation }: Props) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
   const [errors, setErrors] = useState<AuthFormErrors>({});
   const [submitting, setSubmitting] = useState(false);
 
@@ -46,7 +45,7 @@ export function SignUpScreen({ navigation }: Props) {
   }
 
   async function handleSignUp() {
-    const formErrors = validateSignUpForm(name, email, password, confirmPassword);
+    const formErrors = validateSignUpForm(name, email, password);
     setErrors(formErrors);
 
     if (hasAuthFormErrors(formErrors)) {
@@ -126,20 +125,6 @@ export function SignUpScreen({ navigation }: Props) {
                 secureTextEntry
                 placeholder="Crie uma senha"
                 accessibilityLabel="Senha"
-              />
-            </FormField>
-
-            <FormField label="Confirmar senha" error={errors.confirmPassword}>
-              <TextInput
-                style={[styles.input, errors.confirmPassword && styles.inputError]}
-                value={confirmPassword}
-                onChangeText={(value) => {
-                  setConfirmPassword(value);
-                  clearFieldError('confirmPassword');
-                }}
-                secureTextEntry
-                placeholder="Repita a senha"
-                accessibilityLabel="Confirmar senha"
               />
             </FormField>
 

@@ -1,8 +1,6 @@
 import { DailyRecord } from '../models/DailyRecord';
 
-/** Registros fictícios para validar utils/goals.ts (Fase 1). */
 export const MOCK_RECORDS = {
-  /** Todas as 4 metas atingidas → 100% */
   complete: {
     id: 'mock-complete',
     date: '2026-06-29',

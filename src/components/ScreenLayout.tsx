@@ -68,7 +68,6 @@ export interface ScreenContentProps {
   centered?: boolean;
 }
 
-/** Limita largura em telas grandes e centraliza o conteúdo. */
 export function ScreenContent({ children, centered = false }: ScreenContentProps) {
   return (
     <View style={[styles.screenContent, centered && styles.screenContentCentered]}>

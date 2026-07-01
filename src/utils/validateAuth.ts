@@ -1,7 +1,7 @@
 import { AuthSession, User, UserInput } from '../models/User';
 
 export type AuthFormErrors = Partial<
-  Record<'name' | 'email' | 'password' | 'confirmPassword', string>
+  Record<'name' | 'email' | 'password', string>
 >;
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -29,7 +29,6 @@ export function validateSignUpForm(
   name: string,
   email: string,
   password: string,
-  confirmPassword: string,
 ): AuthFormErrors {
   const errors = validateLoginForm(email, password);
 
@@ -41,12 +40,6 @@ export function validateSignUpForm(
 
   if (password && password.length < 4) {
     errors.password = 'Senha deve ter pelo menos 4 caracteres.';
-  }
-
-  if (!confirmPassword) {
-    errors.confirmPassword = 'Confirme a senha.';
-  } else if (password !== confirmPassword) {
-    errors.confirmPassword = 'As senhas não coincidem.';
   }
 
   return errors;

@@ -10,7 +10,6 @@ const EMPTY_PROGRESS: DailyProgress = {
   percentage: 0,
 };
 
-/** Resumo do registro e progresso do dia atual. */
 export function useTodaySummary() {
   const { records, loading, error } = useFitTrackContext();
   const todayDate = getTodayDateString();
