@@ -21,42 +21,50 @@ Aplicativo mobile para registro e acompanhamento de hábitos de saúde: consumo 
 
 ```
 fittrack/
-    assets/
-    src/
-       components/     # Componentes reutilizáveis (botões, cards, formulários)
-          CustomButton.tsx
-          MoodWidget.tsx
-          ProgressIndicator.tsx
-          RecordCard.tsx
-          ScreenLayout.tsx
-       context        # Estado global (auth e registros)
-          FitTrackContext.tsx
-       hooks/          # useAuth, useDailyRecords, useTodaySummary
-          useDailyRecords.ts
-          useTodaySummary.ts
-       models/         # Tipos de dados
-          DailyRecord.ts
-          mocks.ts
-       navigation/     # Rotas do app
-          RootNavigator.tsx
-          types.ts
-       screens/     # Telas de Home, Registros e Histórico
-          HomeScreen.tsx
-          RegisterScreen.tsx
-          HistoryScreen.tsx
-       services/       # AsyncStorage (auth e registros)
-          storage.ts
-       theme/          # Cores e fontes
-          index.ts
-      utils/          # Validações e formatação
-           formatDate.ts
-           goals.ts
-           goals.examples.ts
-          validateRegister.ts
-    app.json
-    index.ts
-    package.json
-    tsconfig.json
+├── assets/
+├── src/
+│   ├── components/          # Componentes reutilizáveis (botões, cards, formulários)
+│   │   ├── CustomButton.tsx
+│   │   ├── MoodWidget.tsx
+│   │   ├── ProgressIndicator.tsx
+│   │   ├── RecordCard.tsx
+│   │   └── ScreenLayout.tsx
+│   ├── context/               # Estado global (auth e registros)
+│   │   ├── AuthContext.tsx
+│   │   └── FitTrackContext.tsx
+│   ├── hooks/                 # useAuth, useDailyRecords, useTodaySummary
+│   │   ├── useAuth.ts
+│   │   ├── useDailyRecords.ts
+│   │   └── useTodaySummary.ts
+│   ├── models/                # Tipos de dados
+│   │   ├── DailyRecord.ts
+│   │   ├── User.ts
+│   │   └── mocks.ts
+│   ├── navigation/            # Rotas do app
+│   │   ├── AppNavigator.tsx
+│   │   ├── AuthNavigator.tsx
+│   │   ├── RootNavigator.tsx
+│   │   └── types.ts
+│   ├── screens/               # Telas de login, home, registro e histórico
+│   │   ├── HomeScreen.tsx
+│   │   ├── LoginScreen.tsx
+│   │   ├── RegisterScreen.tsx
+│   │   ├── SignUpScreen.tsx
+│   │   └── HistoryScreen.tsx
+│   ├── services/              # AsyncStorage (auth e registros)
+│   │   ├── authStorage.ts
+│   │   └── storage.ts
+│   ├── theme/                 # Cores e fontes
+│   │   └── index.ts
+│   └── utils/                 # Validações e formatação
+│       ├── formatDate.ts
+│       ├── goals.ts
+│       ├── validateAuth.ts
+│       └── validateRegister.ts
+├── app.json
+├── index.ts
+├── package.json
+└── tsconfig.json
 ```
 
 ## Como executar
