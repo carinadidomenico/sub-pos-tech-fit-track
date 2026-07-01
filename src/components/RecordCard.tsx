@@ -1,4 +1,4 @@
-import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { Pressable, StyleProp, StyleSheet, Text, View, ViewStyle } from 'react-native';
 
 import { DailyRecord, DAILY_GOALS } from '../models/DailyRecord';
 import { colors, spacing, typography } from '../theme';
@@ -28,13 +28,6 @@ export function RecordCard({ record, onPress }: RecordCardProps) {
     <>
       <View style={styles.header}>
         <Text style={styles.date}>{formatDisplayDate(record.date)}</Text>
-        {highlighted && (
-          <View style={styles.badge}>
-            <Text style={styles.badgeText}>
-              {areAllGoalsMet(record) ? 'Metas OK' : 'Exercício'}
-            </Text>
-          </View>
-        )}
       </View>
 
       <View style={styles.metrics}>
@@ -57,6 +50,7 @@ export function RecordCard({ record, onPress }: RecordCardProps) {
           goal="meta ≥ 3"
         />
         <MetricRow
+          style={styles.metricRowExercise}
           label="Exercício"
           value={exerciseLabel}
           met={isExerciseGoalMet(record.exerciseDone)}
@@ -100,11 +94,12 @@ interface MetricRowProps {
   value: string;
   met: boolean;
   goal: string;
+  style?: StyleProp<ViewStyle>;
 }
 
-function MetricRow({ label, value, met, goal }: MetricRowProps) {
+function MetricRow({ label, value, met, goal, style }: MetricRowProps) {
   return (
-    <View style={styles.metricRow}>
+    <View style={[styles.metricRow, style]}>
       <Text style={styles.metricLabel}>{label}</Text>
       <Text style={[styles.metricValue, met && styles.metricValueMet]}>{value}</Text>
       <Text style={styles.metricGoal}>{goal}</Text>
@@ -138,17 +133,6 @@ const styles = StyleSheet.create({
     ...typography.subtitle,
     color: colors.title,
   },
-  badge: {
-    backgroundColor: colors.success,
-    paddingHorizontal: spacing.sm,
-    paddingVertical: spacing.xs,
-    borderRadius: 999,
-  },
-  badgeText: {
-    ...typography.caption,
-    color: colors.surface,
-    fontWeight: '700',
-  },
   metrics: {
     gap: spacing.sm,
   },
@@ -174,4 +158,7 @@ const styles = StyleSheet.create({
     ...typography.caption,
     color: colors.textSecondary,
   },
+  metricRowExercise: {
+      marginTop: spacing.sm,
+    },
 });

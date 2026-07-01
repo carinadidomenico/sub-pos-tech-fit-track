@@ -66,9 +66,9 @@ export function HomeScreen({ navigation }: Props) {
               <Text style={styles.sectionTitle} accessibilityRole="header">
                 {hasRecordToday ? 'Resumo de hoje' : 'Nenhum registro para hoje'}
               </Text>
-
-              <ProgressIndicator progress={progress} label="Metas" />
-
+              {hasRecordToday && (
+                <ProgressIndicator progress={progress} label="Metas" />
+              )}
               {todayRecord ? (
                 <View
                   style={styles.summaryCard}
@@ -113,19 +113,20 @@ export function HomeScreen({ navigation }: Props) {
           )}
 
           <CustomButton
-            style={styles.registerButton}
+            style={styles.button}
             label={hasRecordToday ? 'Atualizar registro' : 'Registrar hoje'}
             onPress={() => navigation.navigate('Register')}
             accessibilityLabel="Ir para registro diário"
           />
           <CustomButton
-            style={styles.historyButton}
+            style={styles.button}
             label="Ver histórico"
             variant="outline"
             onPress={() => navigation.navigate('History')}
             accessibilityLabel="Ir para histórico"
           />
           <CustomButton
+            style={styles.button}
             label="Sair"
             variant="outline"
             onPress={() => void logout()}
@@ -175,12 +176,12 @@ const styles = StyleSheet.create({
   tagline: {
     ...typography.body,
     color: colors.textSecondary,
-    marginTop: spacing.sm,
+    marginTop: spacing.md,
   },
   sectionTitle: {
     ...typography.subtitle,
     color: colors.title,
-    marginTop: spacing.sm,
+    marginTop: spacing.md,
   },
   summaryCard: {
     backgroundColor: colors.surface,
@@ -189,7 +190,7 @@ const styles = StyleSheet.create({
     borderColor: colors.border,
     padding: spacing.md,
     gap: spacing.sm,
-    marginVertical: spacing.md,
+    marginTop: spacing.md,
   },
   summaryRow: {
     gap: 2,
@@ -199,32 +200,35 @@ const styles = StyleSheet.create({
     color: colors.textSecondary,
     fontSize: 16,
     fontWeight: '700',
+    marginTop: spacing.sm,
   },
   summaryValue: {
     ...typography.body,
     color: colors.text,
     fontWeight: '500',
+    marginTop: spacing.sm,
   },
   summaryHint: {
     ...typography.caption,
     color: colors.textSecondary,
+    marginTop: spacing.sm,
   },
   hint: {
     ...typography.body,
     color: colors.textSecondary,
+    marginTop: spacing.sm,
   },
   caption: {
     ...typography.caption,
     color: colors.textSecondary,
+    marginTop: spacing.sm,
   },
   error: {
     ...typography.caption,
     color: colors.error,
+    marginTop: spacing.sm,
   },
-  registerButton: {
+  button: {
     marginTop: spacing.lg,
-  },
-  historyButton: {
-    marginTop: spacing.lg,
-  },
+  }
 });

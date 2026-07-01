@@ -129,6 +129,7 @@ export function SignUpScreen({ navigation }: Props) {
             </FormField>
 
             <CustomButton
+              style={styles.button}
               label="Cadastrar"
               onPress={handleSignUp}
               loading={submitting}
@@ -136,6 +137,7 @@ export function SignUpScreen({ navigation }: Props) {
               accessibilityLabel="Criar conta no FitTrack"
             />
             <CustomButton
+              style={styles.button}
               label="Já tenho conta"
               variant="outline"
               onPress={() => navigation.goBack()}
@@ -169,6 +171,7 @@ const styles = StyleSheet.create({
   subtitle: {
     ...typography.body,
     color: colors.textSecondary,
+    marginTop: spacing.sm,
   },
   input: {
     minHeight: 44,
@@ -180,8 +183,13 @@ const styles = StyleSheet.create({
     backgroundColor: colors.surface,
     ...typography.body,
     color: colors.text,
+    marginTop: spacing.sm,
   },
   inputError: {
     borderColor: colors.error,
+    marginTop: spacing.sm,
+  },
+  button: {
+    marginTop: spacing.lg,
   },
 });

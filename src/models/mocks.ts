@@ -11,7 +11,6 @@ export const MOCK_RECORDS = {
     exerciseDone: true,
   } satisfies DailyRecord,
 
-  /** Nenhuma meta atingida → 0% */
   empty: {
     id: 'mock-empty',
     date: '2026-06-28',
@@ -22,7 +21,6 @@ export const MOCK_RECORDS = {
     exerciseDone: false,
   } satisfies DailyRecord,
 
-  /** Metade das metas → 50% */
   partial: {
     id: 'mock-partial',
     date: '2026-06-27',
