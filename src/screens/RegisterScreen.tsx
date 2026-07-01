@@ -242,7 +242,7 @@ export function RegisterScreen({ navigation }: Props) {
             </View>
 
             <CustomButton
-            style={styles.saveButton}
+              style={styles.saveButton}
               label="Salvar registro"
               onPress={handleSave}
               disabled={saving || saveStatus === 'success'}
